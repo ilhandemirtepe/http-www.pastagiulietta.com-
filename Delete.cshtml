@@ -1,4 +1,4 @@
-﻿@model PastaMVC.Models.Admin
+﻿@model PastaMVC.Models.Kategori
 
 @{
     ViewBag.Title = "Delete";
@@ -6,36 +6,41 @@
 }
 
 
-@using (Html.BeginForm("Delete", "AdminCRUD", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+@using (Html.BeginForm("Delete", "KategoriCRUD", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
-    <h3>Silmek istediğinizden eminmisiniz ?</h3>
+    <div class="form-group">
+        <label class="col-md-2 control-label"></label>
+        <div class="alert alert-warning fade in col-md-3">
+            <a href="#" class="close" data-dismiss="alert">×</a>
+            <strong>Uyarı..!</strong> Silmek istediğinizden eminmisiniz  ....!
+        </div>
+
+    </div>
 
     <div class="form-group">
-        <label class="col-md-3 control-label">Adı</label>
+        <label class="col-md-3 control-label">Kategori Adı</label>
         <div class="col-md-3">
-            @Html.DisplayFor(model => model.AdminName)
-        </div>
-    </div>
-    <div class="form-group">
-        <label class="col-md-3 control-label">Kullanıcı Adı</label>
-        <div class="col-md-3">
-            @Html.DisplayFor(model => model.AdminUserName)
-        </div>
-    </div>
-    <div class="form-group">
-        <label class="col-md-3 control-label">Şifre</label>
-        <div class="col-md-3">
-            @Html.DisplayFor(model => model.AdminPassWord)
+            @Html.DisplayFor(model => model.KategoriName)
         </div>
     </div>
     <br />
-   
+    <div class="form-group">
+        <label class="col-md-3 control-label">Resim</label>
+        <div class="col-md-3">
+            <img src="~/Content/KategoriResimleri/@Model.KategoriResim" alt="image" height="25" width="60">
+        </div>
+    </div>
     <br />
     <div class="form-group">
-        <input type="submit" value="Sil" class="btn btn-warning">
         <div class="col-md-3">
-            @Html.ActionLink(" Geri Dön", "Index")
+
         </div>
+        <div class="col-md-3">
+            <input type="submit" value="Sil" class="btn btn-warning col-md-3">
+            <div class="col-md-4">
+                @Html.ActionLink(" Geri Dön", "Index")
+            </div>
+        </div>
+        
     </div>
 }
-

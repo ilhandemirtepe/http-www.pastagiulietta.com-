@@ -1,0 +1,41 @@
+﻿@model PastaMVC.Models.Admin
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+@using (Html.BeginForm("Delete", "AdminCRUD", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    <h3>Silmek istediğinizden eminmisiniz ?</h3>
+
+    <div class="form-group">
+        <label class="col-md-3 control-label">Adı</label>
+        <div class="col-md-3">
+            @Html.DisplayFor(model => model.AdminName)
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-3 control-label">Kullanıcı Adı</label>
+        <div class="col-md-3">
+            @Html.DisplayFor(model => model.AdminUserName)
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-3 control-label">Şifre</label>
+        <div class="col-md-3">
+            @Html.DisplayFor(model => model.AdminPassWord)
+        </div>
+    </div>
+    <br />
+   
+    <br />
+    <div class="form-group">
+        <input type="submit" value="Sil" class="btn btn-warning">
+        <div class="col-md-3">
+            @Html.ActionLink(" Geri Dön", "Index")
+        </div>
+    </div>
+}
+

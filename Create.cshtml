@@ -1,4 +1,4 @@
-﻿@model   PastaMVC.Models.Kategori
+﻿@model   PastaMVC.Models.Product
 
 
 @{
@@ -8,21 +8,28 @@
 
 
 @*@class = "form-horizontal", role = "form",*@
-@using (Html.BeginForm("Create", "KategoriCRUD", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal"}))
+@using (Html.BeginForm("Create", "UrunCRUD", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal", role = "form" }))
 {
+  
+   
 
     <div class="form-group">
-        <label class="col-md-3 control-label">Kategori Adı</label>
-        <div class="col-md-3">
-            @Html.EditorFor(model => model.KategoriName, new { htmlAttributes = new { @class = "form-control", required = "" } })
-                
+        <label class="col-md-3 control-label">Kategori Seç</label>
+        <div class="col-md-2">
+          @Html.DropDownListFor(model=>model.Kategoriid, ViewBag.Kategoriid as SelectList, "Kategori seç", new { @class = "form-control" ,required="" })
         </div>
     </div>
     <div class="form-group">
-        <label class="col-md-3 control-label">Resim Ekle</label>
-        <div class="col-md-3">
-            <input type="file" required="" name="file" />
+        <label class="col-md-3 control-label">Ürün Adı</label>
+        <div class="col-md-8">
+            @Html.EditorFor(model => model.ProductName, new { @class = "form-control" , required = "ürün adı bş geçilemez" } )
 
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-3 control-label">Resim Seç</label>
+        <div class="col-md-3">
+            <input type="file" id="inputFile" name="file" required="" />
         </div>
     </div>
     <div class="form-group">

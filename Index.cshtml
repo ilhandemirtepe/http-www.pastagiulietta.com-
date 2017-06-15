@@ -1,31 +1,40 @@
-﻿@model  IEnumerable<PastaMVC.Models.Kategori>
+﻿@model  IEnumerable<PastaMVC.Models.Product>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 <link href="~/Content/Admin/css/bootstrap.min.css" rel="stylesheet" />
-<h2>Kategori İşlemleri</h2>
-<p>@Html.ActionLink("Yeni Kategori Ekle","Create")</p>
+<h2>Ürün İşlemleri</h2>
+<p>@Html.ActionLink("Yeni Ürün Ekle", "Create")</p>
 <table class="table">
     <tr class="success">
-        <th>@Html.DisplayNameFor(model=>model.Kategoriid)</th>
-        <th>@Html.DisplayNameFor(model => model.KategoriName)</th>
-        <th>@Html.DisplayNameFor(model => model.KategoriResim)</th>
-        <th></th>
 
- 
-      
+
+
+        <th>Ürün Numarası</th>
+        <th>Ürün Adı</th>
+        <th>Kategorisi</th>
+        <th>Ürün Resimi</th>
+       <th></th>
+
+     
+
     </tr>
-     @foreach (var item in Model)
-     {
+    @foreach (var item in Model)
+    {
         <tr class="warning">
-            <td>@Html.DisplayFor(Kategoriid =>item.Kategoriid)</td>
-            <td>@Html.DisplayFor(KategoriName => item.KategoriName)</td>
-            <td><img src="~/Content/KategoriResimleri/@item.KategoriResim" alt="image" width="100" height="30"> </td>
-            <td>@Html.ActionLink("Düzenle", "Edit", new { id = item.Kategoriid })
-       
-            @Html.ActionLink("Sil ", "Delete", new { id = item.Kategoriid })</td>
-        </tr>
-     }
-</table>
+            <td>@Html.DisplayFor(Productid => item.Productid)</td>
+            <td>@Html.DisplayFor(ProductName => item.ProductName)</td>
+            <td>@Html.DisplayFor(modelItem => item.Kategori.KategoriName)</td>
+            <td>
+                <img src="~/Content/UrunResimleri/@item.ProductResim" alt="image" width="100" height="30">
+            </td>
+            <td>
+                @Html.ActionLink("Düzenle", "Edit", new { id = item.Productid })
 
+                @Html.ActionLink("Sil ", "Delete", new { id = item.Productid })
+            </td>
+
+        </tr>
+    }
+</table>
